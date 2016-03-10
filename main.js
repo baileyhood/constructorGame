@@ -13,7 +13,7 @@ function Player (options){
   };
 
   this.pointLoss = function (opponent) {
-    if (opponent.paddle && !this.paddle) { //if only one player selects paddle
+    if (opponent.paddle) {
      var totalRatingOnePaddle = opponent.rating + opponent.paddle.paddleRating; //add paddleRating to opponent's rating
         if(totalRatingOnePaddle > this.rating) { //if paddleRating and rating is greater than other player's rating
           opponent.points = opponent.points + 1; // give them one point
@@ -21,30 +21,15 @@ function Player (options){
           console.log ("line 21");
      }
     }
-    else if (opponent.paddle && this.paddle) { //if both players select paddles
-        var totalRatingOpp = opponent.rating + opponent.paddle.paddleRating;
-        var totalRatingThis = this.rating + this.paddle.paddleRating;
-        console.log ("Opponents", totalRatingOpp, "This", totalRatingThis);
-        if(totalRatingOpp > totalRatingThis) { //if paddleRating and rating is greater than other player's rating
-          opponent.points = opponent.points + 1; // give them one point
-          alert (opponent.name + " won the point! The score is: " + this.points + "|" + opponent.points);
-          console.log ("line 31");
-     }
-        else {
-          this.points = this.points + 1; // this player gets point
-          alert (this.name + " won the point! The score is: " + this.points + "|" + opponent.points);
-          console.log ("line 36");
-        }
-    }
     else if (this.rating > opponent.rating) {
       this.points = this.points + 1;
       alert (this.name + " won the point! The score is: " + opponent.points + "|" + this.points);
-      console.log ("line 42");
+      console.log ("line 27");
     }
     else {
       opponent.points = opponent.points + 1;
       alert (this.name + " lost the point! The score is: " + opponent.points + "|" + this.points);
-      console.log ("line 47");
+      console.log ("line 32");
       }
   }; //end of pointLoss function
 
