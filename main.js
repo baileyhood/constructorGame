@@ -12,8 +12,6 @@ function Player (options){
     opponent.pointLoss(this);
   };
 
-
-
   this.pointLoss = function (opponent) {
     if (opponent.paddle && !this.paddle) { //if only one player selects paddle
      var totalRatingOnePaddle = opponent.rating + opponent.paddle.paddleRating; //add paddleRating to opponent's rating
@@ -55,10 +53,11 @@ function Player (options){
     alert("recalculate " + this.name + " attributes so that total for 'Rating' is 10. Right now the total is " + this.rating + ".");
   }
 
-
-
 this.paddleChoice = function (name, strength, spin) {
-  this.paddle = new Paddle ({name: name, strength: strength, spin: spin});
+  this.paddle = new Paddle ({
+    name: name,
+    strength: strength,
+    spin: spin});
 };
 
 } //END OF FIRST CONSTRUCTOR
@@ -76,12 +75,83 @@ function Paddle (options) {
   }
 }
 
-
 //THIRD CONSTRUCTOR
-function Paddle (options) {
+function Location (options) {
   var options = options || {};
-  
+  this.randomDistractionLevel = function () {
+    var random = Math.floor(Math.random() * 10 + 1);
+    return random + this.setDistractionLevel;
+    };
+  this.name = options.name;
+  this.setDistractionLevel = options.setDistractionLevel;
+  this.totalDistractionLevel = this.setDistractionLevel + this.randomDistractionLevel();
 }
 
-var justin = new Player ({name:"Justin", points: 0, power: 1, speed: 2, spin: 2, mentalStrength: 4});
-var russ = new Player ({name:"Russ", points: 0, power: 3, speed: 4, spin: 2, mentalStrength: 1});
+//PLAYER OPTIONS
+
+var justin = new Player ({
+  name:"Justin",
+  points: 0,
+  power: 1,
+  speed: 2,
+  spin: 2,
+  mentalStrength: 4});
+
+var russ = new Player ({
+  name:"Russ",
+  points: 0,
+  power: 3,
+  speed: 3,
+  spin: 2,
+  mentalStrength: 2});
+
+var nathan = new Player ({
+    name:"Nathan",
+    points: 0,
+    power: 4,
+    speed: 1,
+    spin: 3,
+    mentalStrength: 2});
+
+var woody = new Player ({
+    name:"Woody",
+    points: 0,
+    power: 1,
+    speed: 0,
+    spin: 2,
+    mentalStrength: 6});
+
+//PADDLE OPTIONS
+
+var spinner = new Paddle ({
+  name: "Spinner",
+  strength: 2,
+  spin: 7
+});
+
+var smash = new Paddle ({
+  name: "Spinner",
+  strength: 7,
+  spin: 0
+});
+
+//LOCATION OPTIONS
+var bar = new Location ({
+  name: "Noisy Bar",
+  setDistractionLevel: 5
+});
+
+var office = new Location ({
+  name: "Office",
+  setDistractionLevel: 1
+});
+
+var tiy = new Location ({
+  name: "The Iron Yard",
+  setDistractionLevel: 4
+});
+
+var party = new Location ({
+  name: "Loud Party",
+  setDistractionLevel: 6
+});
