@@ -1,0 +1,16 @@
+h1 {
+  text-align: center;
+}
+.players-container {
+  width: 75%;
+  margin: 0 auto;
+  background-color: lightgrey;
+  height: 500px;
+}
+.indiv-player {
+  width: 48%;
+  height: 48%;
+  background-color: grey;
+  display: inline-block;
+  margin-right: 1px;
+}
