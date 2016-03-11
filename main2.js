@@ -14,6 +14,20 @@ function Player(options) {
   this.rating = this.forehand + this.backhand + this.serve + this.mentalStrength;
 }
 
+Player.prototype.paddleSelection = function (name){
+  this.paddle = name;
+};
+
+Player.prototype.locationSelection = function (name) {
+  this.location = name;
+};
+
+Player.prototype.pointPlay = function (opponent) {
+  if (opponent.paddle && opponent.location) {
+    if ()
+  }
+};
+
 ////////////////////////////
 //SECOND CONSTRUCTOR
 ///////////////////////////
@@ -113,7 +127,7 @@ var spinnerPaddle = new Paddle ({
 });
 
 var smashPaddle = new Paddle ({
-  name: "smash",
+  name: "Smash",
   spin: 1,
   power: 8,
 });
@@ -124,17 +138,18 @@ var allRoundPaddle = new Paddle ({
   power: 4,
 });
 
-
-////////////////////////////
-//BEGINNING OF GAME
-///////////////////////////
+// ////////////////////////////
+// //BEGINNING OF GAME
+// ///////////////////////////
 $(document).ready(function() {
   page.init();
 });
+init: function () {
+},
 
 var charChoice = [
   russPlayer, justinPlayer, dinaPlayer, weesiePlayer
-]
+];
 var charPull = function (){
   charDisplay = "";
   charChoice.forEach(function(el){
