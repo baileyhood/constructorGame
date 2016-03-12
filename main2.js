@@ -29,6 +29,8 @@ var page = {
     $('.location-info-container').on('click', page.selectLocation);
     $('.opponent-info-container').on('click', page.selectOpponent);
     $('#forehand-stroke').on('click', page.forehandSelection);
+    $('#backhand-stroke').on('click', page.backhandSelection);
+    $('#return-stroke').on('click',page.opponentsReturnShot);
   },
 
 ///////////////////////////////
@@ -122,10 +124,32 @@ selectOpponent: function () {
 /////GAMEPLAY
 //////////////////////////////
 
-forehandSelection: function () {
+forehandSelection: function (player) {
   event.preventDefault();
   selectedCharacter.forehandStroke(selectedOpponent);
+  page.displayScore();
   console.log ("Selected Player's energy: ", selectedCharacter.energy, " Opponent's Energy: ", selectedOpponent.energy);
+  $('.stroke-section').addClass('inactive');
+  $('.return-stroke-section').removeClass('inactive');
+},
+
+backhandSelection: function () {
+  event.preventDefault();
+  selectedCharacter.backhandStroke(selectedOpponent);
+  page.displayScore();
+  console.log ("Selected Player's energy: ", selectedCharacter.energy, " Opponent's Energy: ", selectedOpponent.energy);
+},
+
+displayScore: function () {
+$('.player-scoreboard').html(selectedCharacter.name + "'s Score: " + selectedCharacter.points);
+$('.opponent-scoreboard').html(selectedOpponent.name + "'s Score: " + selectedOpponent.points);
+},
+
+opponentsReturnShot: function () {
+  event.preventDefault();
+  selectedOpponent.returnShot(selectedCharacter);
+  console.log ("Selected Player's energy: ", selectedCharacter.energy, " Opponent's Energy: ", selectedOpponent.energy);
+  page.displayScore();
 }
 
 }; //end of page object

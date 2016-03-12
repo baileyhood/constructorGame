@@ -12,7 +12,6 @@ function Player(options) {
   this.backhand = options.backhand;
   this.serve = options.serve;
   this.mentalStrength = options.mentalStrength;
-
   this.img = options.img;
   this.rating = this.forehand + this.backhand + this.serve + this.mentalStrength;
 }
@@ -26,12 +25,14 @@ Player.prototype.locationSelection = function (name) {
 };
 
 Player.prototype.forehandStroke = function (opponent) {
- if (this.energy === 0) {
+ if (this.energy < 1) {
    opponent.points = opponent.points + 1;
+   this.energy = 20;
 
  }
- else if (opponent.energy === 0) {
+ else if (opponent.energy < 1  ) {
    this.points = this.points + 1;
+   opponent.energy = 20;
  }
  else {
    opponent.energy =  opponent.energy - this.forehand;
@@ -39,6 +40,33 @@ Player.prototype.forehandStroke = function (opponent) {
 
 };
 
+Player.prototype.backhandStroke = function (opponent) {
+ if (this.energy < 1) {
+   opponent.points = opponent.points + 1;
+   this.energy = 20;
+
+ }
+ else if (opponent.energy < 1  ) {
+   this.points = this.points + 1;
+   opponent.energy = 20;
+ }
+ else {
+   opponent.energy =  opponent.energy - this.backhand;
+ }
+
+};
+
+Player.prototype.returnShot = function (opponent) {
+  var randomNum = Math.floor(Math.random() * 2) + 1;
+  if (randomNum === 1) {
+    this.forehandStroke(opponent);
+    console.log ("Opponent made a return forehand stroke");
+  }
+  if (randomNum === 2) {
+    this.backhandStroke(opponent);
+    console.log ("Opponent made a return backhand stroke");
+  }
+};
 
 ////////////////////////////
 //SECOND CONSTRUCTOR
