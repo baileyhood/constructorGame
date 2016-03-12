@@ -41,6 +41,8 @@ function Location (options) {
       return random() + this.setDistractionLevel;
   };
   this.name = options.name;
+  this.id = options.id;
+  this.img = options.img;
   this.setDistractionLevel = options.setDistractionLevel;
   this.totalDistractionLevel = this.setDistractionLevel + this.randomDistractionLevel();
 }
@@ -115,23 +117,38 @@ var charChoice = [
 
 var barLocal = new Location({
     name: "Noisy Bar",
+    id: 'barLocal',
+    img: 'images/bar.jpg',
     setDistractionLevel: 5
 });
 
 var officeLocal = new Location({
     name: "Office",
+    id: 'officeLocal',
+    img: 'images/bar.jpg',
     setDistractionLevel: 1
 });
 
 var tiyLocal = new Location({
     name: "The Iron Yard",
+    id: 'tiyLocal',
+    img: 'images/bar.jpg',
     setDistractionLevel: 3
 });
 
 var partyLocal = new Location({
     name: "Loud Party",
+    id: 'partyLocal',
+    img: 'images/bar.jpg',
     setDistractionLevel: 6
 });
+
+var locationChoice = [
+barLocal,
+officeLocal,
+tiyLocal,
+partyLocal
+];
 
 ////////////////////////////
 //PADDLE OPTIONS

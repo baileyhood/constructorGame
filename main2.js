@@ -14,11 +14,13 @@ var page = {
   styling: function () {
     page.charPull();
     page.paddlePull();
+    page.locationPull();
   },
 
   events: function () {
     $('.info-container').on('click', page.selectChar);
     $('.paddle-info-container').on('click', page.selectPaddle);
+    $('.location-info-container').on('click', page.selectLocation);
   },
 
 ///////////////////////////////
@@ -58,6 +60,23 @@ selectPaddle: function (event) {
   $('.player-selection').addClass('inactive');
   $('.paddle-selection').addClass('inactive');
   $('.location-selection').removeClass('inactive');
+},
+
+///////////////////////////////
+/////GETTING LOCATION INFO
+//////////////////////////////
+
+locationPull: function () {
+  var tmpl = _.template(templates.locationDisplayTemplate);
+  locationChoice.forEach(function(el){
+    $('.locations-container').append(tmpl(el));
+  });
+},
+
+selectLocation: function (event) {
+  event.preventDefault();
+  var selectedLocation = ($(this).attr('id'));
+  console.log("selected location: ",selectedLocation);
 }
 
 }; //end of page object

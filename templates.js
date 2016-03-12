@@ -12,3 +12,10 @@ templates.paddleDisplayTemplate = [
   "<img src = '<%= img %>'>",
   "</div>"
 ].join("");
+
+templates.locationDisplayTemplate = [
+  "<div id= '<%= id %>' class='paddle-info-container'>",
+  "<h1> <%= name %> </h1>",
+  "<img src = '<%= img %>'>",
+  "</div>"
+].join("");
