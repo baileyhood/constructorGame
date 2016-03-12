@@ -1,13 +1,14 @@
-// ////////////////////////////
-// //BEGINNING OF GAME
-// ///////////////////////////
+///////////////////////////////
+/////BEGINNING OF GAME
+//////////////////////////////
 $(document).ready(function(){
   page.init();
 });
 
-var selectedCharacter = "";
+var selectedCharacter = "";  //TRY TO NOT MAKE THIS A GLOBAL VARIABLE
 var selectedPaddle = "";
 var selectedLocation = "";
+
 var page = {
   init: function(){
     page.styling();
@@ -18,6 +19,7 @@ var page = {
     page.charPull();
     page.paddlePull();
     page.locationPull();
+    page.opponentPull();
   },
 
   events: function () {
@@ -43,6 +45,7 @@ selectChar: function (event) { //getting player id and hiding first section
     console.log ("selected player:", selectedCharacter);
     $('.player-selection').addClass('inactive');
     $('.paddle-selection').removeClass('inactive');
+    $('.selection-info-container').append("Chosen Player: " + ($(this).attr('rel')));
 },
 
 ///////////////////////////////
@@ -59,12 +62,13 @@ paddlePull: function () {
 selectPaddle: function (event) {
   event.preventDefault();
   selectedPaddle = ($(this).attr('id'));
-  charChoice[0].paddleSelection(spinnerPaddle);
   console.log("selected paddle: ",selectedPaddle);
   page.assignPaddle();
   $('.player-selection').addClass('inactive');
   $('.paddle-selection').addClass('inactive');
   $('.location-selection').removeClass('inactive');
+  $('.selection-info-container').append("Chosen Paddle: " + ($(this).attr('rel')));
+
 },
 
 ///////////////////////////////
@@ -83,17 +87,36 @@ selectLocation: function (event) {
   selectedLocation = ($(this).attr('id'));
   console.log("selected local: ",selectedLocation);
   page.assignLocation();
+  $('.selection-info-container').append("Chosen Location: " + ($(this).attr('rel')));
+  $('.location-selection').addClass('inactive');
+  $('.opponent-selection').removeClass('inactive');
 },
 
-///////////////////////////////
-/////ASSIGNING
-//////////////////////////////
+
+////////////////////////////////////////////
+/////ASSIGNING PADDLE AND LOCATION TO PLAYER
+////////////////////////////////////////////
 
 assignPaddle: function () {
   charChoice[selectedCharacter].paddleSelection (paddleChoice[selectedPaddle]);
 },
 assignLocation: function () {
   charChoice[selectedCharacter].locationSelection (locationChoice[selectedLocation]);
+},
+
+///////////////////////////////
+/////GETTING OPPONENT INFO
+//////////////////////////////
+
+opponentPull : function () {
+  var opponentArr = charChoice.filter(function(el){
+    return Number(selectedCharacter) !== el.id;
+  });
+  var tmpl = _.template(templates.locationDisplayTemplate);
+  opponentArr.forEach(function(el){
+    $('.opponent-container').append(tmpl(el));
+});
 }
+
 
 }; //end of page object

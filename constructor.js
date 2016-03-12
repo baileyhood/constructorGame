@@ -12,6 +12,7 @@ function Player(options) {
   this.backhand = options.backhand;
   this.serve = options.serve;
   this.mentalStrength = options.mentalStrength;
+
   this.img = options.img;
   this.rating = this.forehand + this.backhand + this.serve + this.mentalStrength;
 }
@@ -37,7 +38,7 @@ Player.prototype.locationSelection = function (name) {
 function Location (options) {
   var options = options || {};
   this.randomDistractionLevel = function() {
-      var random = function () {return Math.round(Math.random() * (1 - 5) + 1)};
+      var random = function () {return Math.round(Math.random() * (1 - 5) + 1);};
       return random() + this.setDistractionLevel;
   };
   this.name = options.name;
@@ -84,24 +85,24 @@ var justinPlayer = new Player({
     img: "images/justin.png"
 });
 
-var weesiePlayer = new Player({
-    name: "Weesie",
-    id: 2,
-    forehand: 3,
-    backhand: 3,
-    serve: 0,
-    mentalStrength: 3,
-    img: "images/weesie.jpg"
-});
-
 var dinaPlayer = new Player({
     name: "Dina",
-    id: 3,
+    id: 2,
     forehand: 6,
     backhand: 0,
     serve: 2,
     mentalStrength: 1,
     img: "images/dina.jpg"
+});
+
+var weesiePlayer = new Player({
+    name: "Weesie",
+    id: 3,
+    forehand: 3,
+    backhand: 3,
+    serve: 0,
+    mentalStrength: 3,
+    img: "images/weesie.jpg"
 });
 
 var charChoice = [
