@@ -28,6 +28,7 @@ var page = {
     $('.paddle-info-container').on('click', page.selectPaddle);
     $('.location-info-container').on('click', page.selectLocation);
     $('.opponent-info-container').on('click', page.selectOpponent);
+    $('#forehand-stroke').on('click', page.forehandSelection);
   },
 
 ///////////////////////////////
@@ -113,6 +114,18 @@ selectOpponent: function () {
   selectedOpponent = charChoice[($(this).attr('id'))];
   console.log (selectedOpponent);
   $('.opponent-selection-container').append("Opponent: " + ($(this).attr('rel')));
+  $('.opponent-selection').addClass('inactive');
+  $('.stroke-section').removeClass('inactive');
+},
+
+///////////////////////////////
+/////GAMEPLAY
+//////////////////////////////
+
+forehandSelection: function () {
+  event.preventDefault();
+  selectedCharacter.forehandStroke(selectedOpponent);
+  console.log ("Selected Player's energy: ", selectedCharacter.energy, " Opponent's Energy: ", selectedOpponent.energy);
 }
 
 }; //end of page object

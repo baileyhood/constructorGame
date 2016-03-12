@@ -7,7 +7,7 @@ function Player(options) {
   this.name = options.name || "Richard Head";
   this.id = options.id;
   this.points = 0;
-  this.energy = 10;
+  this.energy = 20;
   this.forehand = options.forehand;
   this.backhand = options.backhand;
   this.serve = options.serve;
@@ -25,15 +25,20 @@ Player.prototype.locationSelection = function (name) {
   this.location = name;
 };
 
-Player.prototype.serve = function (name) {
-  
+Player.prototype.forehandStroke = function (opponent) {
+ if (this.energy === 0) {
+   opponent.points = opponent.points + 1;
+
+ }
+ else if (opponent.energy === 0) {
+   this.points = this.points + 1;
+ }
+ else {
+   opponent.energy =  opponent.energy - this.forehand;
+ }
+
 };
 
-// Player.prototype.pointPlay = function (opponent) {
-//   if (opponent.paddle && opponent.location) {
-//     if ()
-//   }
-// };
 
 ////////////////////////////
 //SECOND CONSTRUCTOR
