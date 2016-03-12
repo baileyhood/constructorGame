@@ -24,36 +24,57 @@ Player.prototype.locationSelection = function (name) {
   this.location = name;
 };
 
+var randomStrokeNum = Math.floor(Math.random() * 10) + 1; //used 10 b/c that's max number of skills
+
 Player.prototype.forehandStroke = function (opponent) {
- if (this.energy < 1) {
-   opponent.points = opponent.points + 1;
-   this.energy = 20;
+if (randomStrokeNum < this.forehand) {
+       if (this.energy < 1) {
+         opponent.points = opponent.points + 1;
+         this.energy  = 20;
+         opponent.energy = 20;
 
- }
- else if (opponent.energy < 1  ) {
-   this.points = this.points + 1;
-   opponent.energy = 20;
- }
- else {
-   opponent.energy =  opponent.energy - this.forehand;
- }
-
+       }
+       else if (opponent.energy < 1  ) {
+         this.points = this.points + 1;
+         this.energy  = 20;
+         opponent.energy = 20;
+       }
+       else {
+         opponent.energy =  opponent.energy - this.forehand;
+       }
+    }
+  else {
+    console.log (this.name , "Missed the shot! Random number was: " ,randomStrokeNum);
+    opponent.points = opponent.points + 1;
+    this.energy  = 20;
+    opponent.energy = 20;
+  }
 };
 
 Player.prototype.backhandStroke = function (opponent) {
- if (this.energy < 1) {
-   opponent.points = opponent.points + 1;
-   this.energy = 20;
+  console.log ("This is randomstroke num: ", randomStrokeNum);
+  if (randomStrokeNum < this.backhand) {
+       if (this.energy < 1) {
+         opponent.points = opponent.points + 1;
+         this.energy  = 20;
+         opponent.energy = 20;
 
- }
- else if (opponent.energy < 1  ) {
-   this.points = this.points + 1;
-   opponent.energy = 20;
- }
- else {
-   opponent.energy =  opponent.energy - this.backhand;
- }
-
+       }
+       else if (opponent.energy < 1  ) {
+         this.points = this.points + 1;
+         this.energy  = 20;
+         opponent.energy = 20;
+       }
+       else {
+         opponent.energy =  opponent.energy - this.backhand;
+       }
+  }
+  else {
+    console.log (this.name , "Missed the shot!");
+    opponent.points = opponent.points + 1;
+    this.energy  = 20;
+    opponent.energy = 20;
+  }
 };
 
 Player.prototype.returnShot = function (opponent) {

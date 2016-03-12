@@ -20,7 +20,6 @@ var page = {
     page.charPull();
     page.paddlePull();
     page.locationPull();
-    page.opponentPull();
   },
 
   events: function () {
@@ -91,6 +90,7 @@ selectLocation: function (event) {
   event.preventDefault();
   selectedCharacter.locationSelection(locationChoice[($(this).attr('id'))]); //redefining selectedCharacter so it has location selection
   console.log("added location selection: ",selectedCharacter);
+  page.opponentPull();
   $('.selection-info-container').append("Chosen Location: " + ($(this).attr('rel')));
   $('.location-selection').addClass('inactive');
   $('.opponent-selection').removeClass('inactive');
@@ -103,8 +103,9 @@ selectLocation: function (event) {
 
 opponentPull : function () {
   var opponentArr = charChoice.filter(function(el){
-    return Number(selectedCharacter) !== el.id;
+    return Number(selectedCharacter.id) !== el.id;
   });
+  console.log(opponentArr);
   var tmpl = _.template(templates.opponentDisplayTemplate);
   opponentArr.forEach(function(el){
     $('.opponent-container').append(tmpl(el));
@@ -138,6 +139,8 @@ backhandSelection: function () {
   selectedCharacter.backhandStroke(selectedOpponent);
   page.displayScore();
   console.log ("Selected Player's energy: ", selectedCharacter.energy, " Opponent's Energy: ", selectedOpponent.energy);
+  $('.stroke-section').addClass('inactive');
+  $('.return-stroke-section').removeClass('inactive');
 },
 
 displayScore: function () {
@@ -150,6 +153,8 @@ opponentsReturnShot: function () {
   selectedOpponent.returnShot(selectedCharacter);
   console.log ("Selected Player's energy: ", selectedCharacter.energy, " Opponent's Energy: ", selectedOpponent.energy);
   page.displayScore();
+  $('.return-stroke-section').addClass('inactive');
+  $('.stroke-section').removeClass('inactive');
 }
 
 }; //end of page object
