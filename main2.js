@@ -5,6 +5,9 @@ $(document).ready(function(){
   page.init();
 });
 
+var selectedCharacter = "";
+var selectedPaddle = "";
+var selectedLocation = "";
 var page = {
   init: function(){
     page.styling();
@@ -36,7 +39,7 @@ charPull: function (){ //pulling Player info and displaying on page
 
 selectChar: function (event) { //getting player id and hiding first section
     event.preventDefault();
-    var selectedCharacter = ($(this).attr('id'));
+    selectedCharacter = ($(this).attr('id'));
     console.log ("selected player:", selectedCharacter);
     $('.player-selection').addClass('inactive');
     $('.paddle-selection').removeClass('inactive');
@@ -55,8 +58,10 @@ paddlePull: function () {
 
 selectPaddle: function (event) {
   event.preventDefault();
-  var selectedPaddle = ($(this).attr('id'));
+  selectedPaddle = ($(this).attr('id'));
+  charChoice[0].paddleSelection(spinnerPaddle);
   console.log("selected paddle: ",selectedPaddle);
+  page.assignPaddle();
   $('.player-selection').addClass('inactive');
   $('.paddle-selection').addClass('inactive');
   $('.location-selection').removeClass('inactive');
@@ -75,8 +80,20 @@ locationPull: function () {
 
 selectLocation: function (event) {
   event.preventDefault();
-  var selectedLocation = ($(this).attr('id'));
-  console.log("selected location: ",selectedLocation);
+  selectedLocation = ($(this).attr('id'));
+  console.log("selected local: ",selectedLocation);
+  page.assignLocation();
+},
+
+///////////////////////////////
+/////ASSIGNING
+//////////////////////////////
+
+assignPaddle: function () {
+  charChoice[selectedCharacter].paddleSelection (paddleChoice[selectedPaddle]);
+},
+assignLocation: function () {
+  charChoice[selectedCharacter].locationSelection (locationChoice[selectedLocation]);
 }
 
 }; //end of page object

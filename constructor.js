@@ -66,7 +66,7 @@ function Paddle (options) {
 ///////////////////////////
 var russPlayer = new Player({
     name: "Russ",
-    id: 'russPlayer',
+    id: 0,
     forehand: 4,
     backhand: 2,
     serve: 2,
@@ -76,7 +76,7 @@ var russPlayer = new Player({
 
 var justinPlayer = new Player({
     name: "Justin",
-    id: 'justinPlayer',
+    id: 1,
     forehand: 3,
     backhand: 1,
     serve: 1,
@@ -86,7 +86,7 @@ var justinPlayer = new Player({
 
 var weesiePlayer = new Player({
     name: "Weesie",
-    id: 'weesiePlayer',
+    id: 2,
     forehand: 3,
     backhand: 3,
     serve: 0,
@@ -96,7 +96,7 @@ var weesiePlayer = new Player({
 
 var dinaPlayer = new Player({
     name: "Dina",
-    id: 'dinaPlayer',
+    id: 3,
     forehand: 6,
     backhand: 0,
     serve: 2,
@@ -117,28 +117,28 @@ var charChoice = [
 
 var barLocal = new Location({
     name: "Noisy Bar",
-    id: 'barLocal',
+    id: 0,
     img: 'images/bar.jpg',
     setDistractionLevel: 5
 });
 
 var officeLocal = new Location({
     name: "Office",
-    id: 'officeLocal',
+    id: 1,
     img: 'images/bar.jpg',
     setDistractionLevel: 1
 });
 
 var tiyLocal = new Location({
     name: "The Iron Yard",
-    id: 'tiyLocal',
+    id: 2,
     img: 'images/bar.jpg',
     setDistractionLevel: 3
 });
 
 var partyLocal = new Location({
     name: "Loud Party",
-    id: 'partyLocal',
+    id: 3,
     img: 'images/bar.jpg',
     setDistractionLevel: 6
 });
@@ -157,7 +157,7 @@ partyLocal
 
 var spinnerPaddle = new Paddle ({
   name: "Spinner",
-  id: 'spinnerPaddle',
+  id: 0,
   img: 'images/paddle.jpg',
   spin: 7,
   power: 1,
@@ -166,7 +166,7 @@ var spinnerPaddle = new Paddle ({
 var smashPaddle = new Paddle ({
   name: "Smash",
   img: 'images/paddle.jpg',
-  id: 'smashPaddle',
+  id: 1,
   spin: 1,
   power: 8,
 });
@@ -174,7 +174,7 @@ var smashPaddle = new Paddle ({
 var allRoundPaddle = new Paddle ({
   name: "All-Rounder",
   img: 'images/paddle.jpg',
-  id: 'allRoundPaddle',
+  id: 2,
   spin: 4,
   power: 4,
 });

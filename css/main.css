@@ -43,3 +43,23 @@ h1 {
 
 .paddle-info-container:nth-child(3) {
   margin-right: 0; }
+
+.locations-container {
+  width: 75%;
+  margin: 0 auto;
+  background-color: lightgrey; }
+
+.location-info-container {
+  width: 48%;
+  background-color: grey;
+  display: inline-block;
+  margin-right: 37px;
+  margin-bottom: 37px; }
+
+.location-info-container img {
+  margin: 0 auto;
+  display: block;
+  width: 50%; }
+
+.location-info-container:nth-child(2n+2) {
+  margin-right: 0; }

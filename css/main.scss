@@ -5,7 +5,10 @@ h1 {
   text-align: center;
 }
 
-//PLAYER SELECTION PAGE
+///////////////////////////////
+/////PLAYER SELECTION PAGE
+//////////////////////////////
+
 .players-container {
   width: 75%;
   margin: 0 auto;
@@ -27,7 +30,10 @@ h1 {
   margin-right: 0;
 }
 
-//PADDLE SELECTION page
+///////////////////////////////
+/////PADDLE SELECTION
+//////////////////////////////
+
 .paddles-container {
   width: 75%;
   margin: 0 auto;
@@ -46,5 +52,30 @@ h1 {
   }
 }
 .paddle-info-container:nth-child(3) {
+  margin-right: 0;
+}
+
+///////////////////////////////
+/////LOCATION SELECTION
+//////////////////////////////
+
+.locations-container {
+  width: 75%;
+  margin: 0 auto;
+  background-color: lightgrey;
+}
+.location-info-container {
+  width: 48%;
+  background-color: grey;
+  display: inline-block;
+  margin-right: 37px;
+  margin-bottom: 37px;
+  img {
+    margin: 0 auto;
+    display: block;
+    width: 50%;
+  }
+}
+.location-info-container:nth-child(2n+2) {
   margin-right: 0;
 }
