@@ -25,6 +25,10 @@ Player.prototype.locationSelection = function (name) {
   this.location = name;
 };
 
+Player.prototype.serve = function (name) {
+  
+};
+
 // Player.prototype.pointPlay = function (opponent) {
 //   if (opponent.paddle && opponent.location) {
 //     if ()

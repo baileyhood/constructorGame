@@ -8,6 +8,7 @@ $(document).ready(function(){
 var selectedCharacter = "";  //TRY TO NOT MAKE THIS A GLOBAL VARIABLE
 var selectedPaddle = "";
 var selectedLocation = "";
+var selectedOpponent = "";
 
 var page = {
   init: function(){
@@ -26,6 +27,7 @@ var page = {
     $('.info-container').on('click', page.selectChar);
     $('.paddle-info-container').on('click', page.selectPaddle);
     $('.location-info-container').on('click', page.selectLocation);
+    $('.opponent-info-container').on('click', page.selectOpponent);
   },
 
 ///////////////////////////////
@@ -41,8 +43,8 @@ charPull: function (){ //pulling Player info and displaying on page
 
 selectChar: function (event) { //getting player id and hiding first section
     event.preventDefault();
-    selectedCharacter = ($(this).attr('id'));
-    console.log ("selected player:", selectedCharacter);
+    selectedCharacter = charChoice[($(this).attr('id'))];
+    console.log ("added player selection:", selectedCharacter);
     $('.player-selection').addClass('inactive');
     $('.paddle-selection').removeClass('inactive');
     $('.selection-info-container').append("Chosen Player: " + ($(this).attr('rel')));
@@ -61,9 +63,9 @@ paddlePull: function () {
 
 selectPaddle: function (event) {
   event.preventDefault();
-  selectedPaddle = ($(this).attr('id'));
-  console.log("selected paddle: ",selectedPaddle);
-  page.assignPaddle();
+  selectedCharacter.paddleSelection(paddleChoice[($(this).attr('id'))]);  //redefining selectedCharacter so it has paddle selection
+  console.log("added paddle selection: ",selectedCharacter);
+  // page.assignPaddle();
   $('.player-selection').addClass('inactive');
   $('.paddle-selection').addClass('inactive');
   $('.location-selection').removeClass('inactive');
@@ -84,25 +86,13 @@ locationPull: function () {
 
 selectLocation: function (event) {
   event.preventDefault();
-  selectedLocation = ($(this).attr('id'));
-  console.log("selected local: ",selectedLocation);
-  page.assignLocation();
+  selectedCharacter.locationSelection(locationChoice[($(this).attr('id'))]); //redefining selectedCharacter so it has location selection
+  console.log("added location selection: ",selectedCharacter);
   $('.selection-info-container').append("Chosen Location: " + ($(this).attr('rel')));
   $('.location-selection').addClass('inactive');
   $('.opponent-selection').removeClass('inactive');
 },
 
-
-////////////////////////////////////////////
-/////ASSIGNING PADDLE AND LOCATION TO PLAYER
-////////////////////////////////////////////
-
-assignPaddle: function () {
-  charChoice[selectedCharacter].paddleSelection (paddleChoice[selectedPaddle]);
-},
-assignLocation: function () {
-  charChoice[selectedCharacter].locationSelection (locationChoice[selectedLocation]);
-},
 
 ///////////////////////////////
 /////GETTING OPPONENT INFO
@@ -112,11 +102,17 @@ opponentPull : function () {
   var opponentArr = charChoice.filter(function(el){
     return Number(selectedCharacter) !== el.id;
   });
-  var tmpl = _.template(templates.locationDisplayTemplate);
+  var tmpl = _.template(templates.opponentDisplayTemplate);
   opponentArr.forEach(function(el){
     $('.opponent-container').append(tmpl(el));
 });
-}
+},
 
+selectOpponent: function () {
+  event.preventDefault();
+  selectedOpponent = charChoice[($(this).attr('id'))];
+  console.log (selectedOpponent);
+  $('.opponent-selection-container').append("Opponent: " + ($(this).attr('rel')));
+}
 
 }; //end of page object

@@ -13,7 +13,7 @@ h1 {
   width: 48%;
   background-color: grey;
   display: inline-block;
-  margin-right: 37px;
+  margin-right: 4%;
   margin-bottom: 37px; }
 
 .info-container img {
@@ -33,7 +33,7 @@ h1 {
   width: 30.5%;
   background-color: grey;
   display: inline-block;
-  margin-right: 37px;
+  margin-right: 4%;
   margin-bottom: 37px; }
 
 .paddle-info-container img {
@@ -53,7 +53,7 @@ h1 {
   width: 48%;
   background-color: grey;
   display: inline-block;
-  margin-right: 37px;
+  margin-right: 4%;
   margin-bottom: 37px; }
 
 .location-info-container img {
@@ -62,4 +62,24 @@ h1 {
   width: 50%; }
 
 .location-info-container:nth-child(2n+2) {
+  margin-right: 0; }
+
+.opponent-container {
+  width: 75%;
+  margin: 0 auto;
+  background-color: lightgrey; }
+
+.opponent-info-container {
+  width: 48%;
+  background-color: grey;
+  display: inline-block;
+  margin-right: 4%;
+  margin-bottom: 37px; }
+
+.opponent-info-container img {
+  margin: 0 auto;
+  display: block;
+  width: 50%; }
+
+.location-info-container:last-child {
   margin-right: 0; }
