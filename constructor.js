@@ -7,7 +7,7 @@ function Player(options) {
   this.name = options.name || "Richard Head";
   this.id = options.id;
   this.points = 0;
-  this.energy = 20;
+  this.energy = 10;
   this.forehand = options.forehand;
   this.backhand = options.backhand;
   this.serve = options.serve;
@@ -18,26 +18,30 @@ function Player(options) {
 
 Player.prototype.paddleSelection = function (name){
   this.paddle = name;
+  this.forehand = this.forehand + this.paddle.control;
+  this.backhand = this.backhand + this.paddle.control;
+  this.energy = this.energy + this.paddle.power;
 };
 
 Player.prototype.locationSelection = function (name) {
   this.location = name;
 };
 
-var randomStrokeNum = Math.floor(Math.random() * 10) + 1; //used 10 b/c that's max number of skills
 
 Player.prototype.forehandStroke = function (opponent) {
+var randomStrokeNum = Math.floor(Math.random() * 6) + 1;
+console.log ("This is randomstroke num: ", randomStrokeNum);
 if (randomStrokeNum < this.forehand) {
        if (this.energy < 1) {
          opponent.points = opponent.points + 1;
-         this.energy  = 20;
-         opponent.energy = 20;
+         this.energy  = 10;
+         opponent.energy = 10;
 
        }
        else if (opponent.energy < 1  ) {
          this.points = this.points + 1;
-         this.energy  = 20;
-         opponent.energy = 20;
+         this.energy  = 10;
+         opponent.energy = 10;
        }
        else {
          opponent.energy =  opponent.energy - this.forehand;
@@ -46,24 +50,25 @@ if (randomStrokeNum < this.forehand) {
   else {
     console.log (this.name , "Missed the shot! Random number was: " ,randomStrokeNum);
     opponent.points = opponent.points + 1;
-    this.energy  = 20;
-    opponent.energy = 20;
+    this.energy  = 10;
+    opponent.energy = 10;
   }
 };
 
 Player.prototype.backhandStroke = function (opponent) {
+  var randomStrokeNum = Math.floor(Math.random() * 6) + 1;
   console.log ("This is randomstroke num: ", randomStrokeNum);
   if (randomStrokeNum < this.backhand) {
        if (this.energy < 1) {
          opponent.points = opponent.points + 1;
-         this.energy  = 20;
-         opponent.energy = 20;
+         this.energy  = 10;
+         opponent.energy = 10;
 
        }
        else if (opponent.energy < 1  ) {
          this.points = this.points + 1;
-         this.energy  = 20;
-         opponent.energy = 20;
+         this.energy  = 10;
+         opponent.energy = 10;
        }
        else {
          opponent.energy =  opponent.energy - this.backhand;
@@ -72,8 +77,8 @@ Player.prototype.backhandStroke = function (opponent) {
   else {
     console.log (this.name , "Missed the shot!");
     opponent.points = opponent.points + 1;
-    this.energy  = 20;
-    opponent.energy = 20;
+    this.energy  = 10;
+    opponent.energy = 10;
   }
 };
 
@@ -86,6 +91,15 @@ Player.prototype.returnShot = function (opponent) {
   if (randomNum === 2) {
     this.backhandStroke(opponent);
     console.log ("Opponent made a return backhand stroke");
+  }
+};
+
+Player.prototype.gameOver = function (opponent) {
+  if (this.points > 10 || opponent.points > 10) {
+    console.log ("GAME OVER!");
+    $('.stroke-section').addClass('inactive');
+    $('.return-stroke-section').addClass ('inactive');
+    $('.game-over-section').removeClass('inactive');
   }
 };
 
@@ -114,7 +128,7 @@ function Location (options) {
 function Paddle (options) {
   var options = options || {};
   this.name = options.name;
-  this.spin = options.spin;
+  this.control = options.control;
   this.power = options.power;
   this.id = options.id;
   this.img = options.img;
@@ -218,7 +232,7 @@ var spinnerPaddle = new Paddle ({
   name: "Spinner",
   id: 0,
   img: 'images/paddle.jpg',
-  spin: 7,
+  control: 2,
   power: 1,
 });
 
@@ -226,16 +240,16 @@ var smashPaddle = new Paddle ({
   name: "Smash",
   img: 'images/paddle.jpg',
   id: 1,
-  spin: 1,
-  power: 8,
+  control: 1,
+  power: 2,
 });
 
 var allRoundPaddle = new Paddle ({
   name: "All-Rounder",
   img: 'images/paddle.jpg',
   id: 2,
-  spin: 4,
-  power: 4,
+  control: 1,
+  power: 1,
 });
 
 var paddleChoice = [

@@ -26,7 +26,7 @@ var page = {
     $('.info-container').on('click', page.selectChar);
     $('.paddle-info-container').on('click', page.selectPaddle);
     $('.location-info-container').on('click', page.selectLocation);
-    $('.opponent-info-container').on('click', page.selectOpponent);
+    $('.opponent-selection').on('click', '.opponent-info-container' , page.selectOpponent);
     $('#forehand-stroke').on('click', page.forehandSelection);
     $('#backhand-stroke').on('click', page.backhandSelection);
     $('#return-stroke').on('click',page.opponentsReturnShot);
@@ -115,7 +115,7 @@ opponentPull : function () {
 selectOpponent: function () {
   event.preventDefault();
   selectedOpponent = charChoice[($(this).attr('id'))];
-  console.log (selectedOpponent);
+  console.log ("Selected Opponent is: " + selectedOpponent.name );
   $('.opponent-selection-container').append("Opponent: " + ($(this).attr('rel')));
   $('.opponent-selection').addClass('inactive');
   $('.stroke-section').removeClass('inactive');
@@ -132,6 +132,7 @@ forehandSelection: function (player) {
   console.log ("Selected Player's energy: ", selectedCharacter.energy, " Opponent's Energy: ", selectedOpponent.energy);
   $('.stroke-section').addClass('inactive');
   $('.return-stroke-section').removeClass('inactive');
+  page.endOfGame();
 },
 
 backhandSelection: function () {
@@ -141,6 +142,7 @@ backhandSelection: function () {
   console.log ("Selected Player's energy: ", selectedCharacter.energy, " Opponent's Energy: ", selectedOpponent.energy);
   $('.stroke-section').addClass('inactive');
   $('.return-stroke-section').removeClass('inactive');
+  page.endOfGame();
 },
 
 displayScore: function () {
@@ -155,6 +157,11 @@ opponentsReturnShot: function () {
   page.displayScore();
   $('.return-stroke-section').addClass('inactive');
   $('.stroke-section').removeClass('inactive');
+  page.endOfGame();
+},
+
+endOfGame: function () {
+  selectedCharacter.gameOver(selectedOpponent);
 }
 
 }; //end of page object
