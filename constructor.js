@@ -3,121 +3,117 @@
 ///////////////////////////
 
 function Player(options) {
-  var options = options || {};
-  this.name = options.name || "Richard Head";
-  this.id = options.id;
-  this.points = 0;
-  this.energy = 10;
-  this.forehand = options.forehand;
-  this.backhand = options.backhand;
-  this.serve = options.serve;
-  this.mentalStrength = options.mentalStrength;
-  this.img = options.img;
-  this.rating = this.forehand + this.backhand + this.serve + this.mentalStrength;
+    var options = options || {};
+    this.name = options.name || "Richard Head";
+    this.id = options.id;
+    this.points = 0;
+    this.energy = 10;
+    this.forehand = options.forehand;
+    this.backhand = options.backhand;
+    this.serve = options.serve;
+    this.mentalStrength = options.mentalStrength;
+    this.img = options.img;
+    this.rating = this.forehand + this.backhand + this.serve + this.mentalStrength;
 }
 
-Player.prototype.paddleSelection = function (name){
-  this.paddle = name;
-  this.forehand = this.forehand + this.paddle.control;
-  this.backhand = this.backhand + this.paddle.control;
-  this.energy = this.energy + this.paddle.power;
+Player.prototype.paddleSelection = function(name) {
+    this.paddle = name;
+    this.forehand = this.forehand + this.paddle.control;
+    this.backhand = this.backhand + this.paddle.control;
+    this.energy = this.energy + this.paddle.power;
 };
 
-Player.prototype.locationSelection = function (name) {
-  this.location = name;
+Player.prototype.locationSelection = function(name) {
+    this.location = name;
 };
 
 
-Player.prototype.forehandStroke = function (opponent) {
-var randomStrokeNum = Math.floor(Math.random() * 6) + 1;
-console.log ("This is randomstroke num: ", randomStrokeNum);
-if (randomStrokeNum < this.forehand) {
-       if (this.energy < 1) {
-         opponent.points = opponent.points + 1;
-         this.energy  = 10;
-         opponent.energy = 10;
+Player.prototype.forehandStroke = function(opponent) {
+    var randomStrokeNum = Math.floor(Math.random() * 6) + 1;
+    console.log("This is randomstroke num: ", randomStrokeNum);
+    if (randomStrokeNum < this.forehand) {
+        if (this.energy < 1) {
+            opponent.points = opponent.points + 1;
+            this.energy = 10;
+            opponent.energy = 10;
 
-       }
-       else if (opponent.energy < 1  ) {
-         this.points = this.points + 1;
-         this.energy  = 10;
-         opponent.energy = 10;
-       }
-       else {
-         opponent.energy =  opponent.energy - this.forehand;
-       }
+        } else if (opponent.energy < 1) {
+            this.points = this.points + 1;
+            this.energy = 10;
+            opponent.energy = 10;
+        } else {
+            opponent.energy = opponent.energy - this.forehand;
+        }
+    } else {
+        console.log(this.name, "Missed the shot! Random number was: ", randomStrokeNum);
+        opponent.points = opponent.points + 1;
+        this.energy = 10;
+        opponent.energy = 10;
     }
-  else {
-    console.log (this.name , "Missed the shot! Random number was: " ,randomStrokeNum);
-    opponent.points = opponent.points + 1;
-    this.energy  = 10;
-    opponent.energy = 10;
-  }
 };
 
-Player.prototype.backhandStroke = function (opponent) {
-  var randomStrokeNum = Math.floor(Math.random() * 6) + 1;
-  console.log ("This is randomstroke num: ", randomStrokeNum);
-  if (randomStrokeNum < this.backhand) {
-       if (this.energy < 1) {
-         opponent.points = opponent.points + 1;
-         this.energy  = 10;
-         opponent.energy = 10;
+Player.prototype.backhandStroke = function(opponent) {
+    var randomStrokeNum = Math.floor(Math.random() * 6) + 1;
+    console.log("This is randomstroke num: ", randomStrokeNum);
+    if (randomStrokeNum < this.backhand) {
+        if (this.energy < 1) {
+            opponent.points = opponent.points + 1;
+            this.energy = 10;
+            opponent.energy = 10;
 
-       }
-       else if (opponent.energy < 1  ) {
-         this.points = this.points + 1;
-         this.energy  = 10;
-         opponent.energy = 10;
-       }
-       else {
-         opponent.energy =  opponent.energy - this.backhand;
-       }
-  }
-  else {
-    console.log (this.name , "Missed the shot!");
-    opponent.points = opponent.points + 1;
-    this.energy  = 10;
-    opponent.energy = 10;
-  }
+        } else if (opponent.energy < 1) {
+            this.points = this.points + 1;
+            this.energy = 10;
+            opponent.energy = 10;
+        } else {
+            opponent.energy = opponent.energy - this.backhand;
+        }
+    } else {
+        console.log(this.name, "Missed the shot!");
+        opponent.points = opponent.points + 1;
+        this.energy = 10;
+        opponent.energy = 10;
+    }
 };
 
-Player.prototype.returnShot = function (opponent) {
-  var randomNum = Math.floor(Math.random() * 2) + 1;
-  if (randomNum === 1) {
-    this.forehandStroke(opponent);
-    console.log ("Opponent made a return forehand stroke");
-  }
-  if (randomNum === 2) {
-    this.backhandStroke(opponent);
-    console.log ("Opponent made a return backhand stroke");
-  }
+Player.prototype.returnShot = function(opponent) {
+    var randomNum = Math.floor(Math.random() * 2) + 1;
+    if (randomNum === 1) {
+        this.forehandStroke(opponent);
+        console.log("Opponent made a return forehand stroke");
+    }
+    if (randomNum === 2) {
+        this.backhandStroke(opponent);
+        console.log("Opponent made a return backhand stroke");
+    }
 };
 
-Player.prototype.gameOver = function (opponent) {
-  if (this.points > 10 || opponent.points > 10) {
-    console.log ("GAME OVER!");
-    $('.stroke-section').addClass('inactive');
-    $('.return-stroke-section').addClass ('inactive');
-    $('.game-over-section').removeClass('inactive');
-  }
+Player.prototype.gameOver = function(opponent) {
+    if (this.points > 10 || opponent.points > 10) {
+        console.log("GAME OVER!");
+        $('.stroke-section').addClass('inactive');
+        $('.return-stroke-section').addClass('inactive');
+        $('.game-over-section').removeClass('inactive');
+    }
 };
 
 ////////////////////////////
 //SECOND CONSTRUCTOR
 ///////////////////////////
 
-function Location (options) {
-  var options = options || {};
-  this.randomDistractionLevel = function() {
-      var random = function () {return Math.round(Math.random() * (1 - 5) + 1);};
-      return random() + this.setDistractionLevel;
-  };
-  this.name = options.name;
-  this.id = options.id;
-  this.img = options.img;
-  this.setDistractionLevel = options.setDistractionLevel;
-  this.totalDistractionLevel = this.setDistractionLevel + this.randomDistractionLevel();
+function Location(options) {
+    var options = options || {};
+    this.randomDistractionLevel = function() {
+        var random = function() {
+            return Math.round(Math.random() * (1 - 5) + 1);
+        };
+        return random() + this.setDistractionLevel;
+    };
+    this.name = options.name;
+    this.id = options.id;
+    this.img = options.img;
+    this.setDistractionLevel = options.setDistractionLevel;
+    this.totalDistractionLevel = this.setDistractionLevel + this.randomDistractionLevel();
 }
 
 
@@ -125,13 +121,13 @@ function Location (options) {
 //THIRD CONSTRUCTOR
 ///////////////////////////
 
-function Paddle (options) {
-  var options = options || {};
-  this.name = options.name;
-  this.control = options.control;
-  this.power = options.power;
-  this.id = options.id;
-  this.img = options.img;
+function Paddle(options) {
+    var options = options || {};
+    this.name = options.name;
+    this.control = options.control;
+    this.power = options.power;
+    this.id = options.id;
+    this.img = options.img;
 }
 
 ////////////////////////////
@@ -178,10 +174,10 @@ var weesiePlayer = new Player({
 });
 
 var charChoice = [
-  russPlayer,
-  justinPlayer,
-  dinaPlayer,
-  weesiePlayer
+    russPlayer,
+    justinPlayer,
+    dinaPlayer,
+    weesiePlayer
 ];
 
 ////////////////////////////
@@ -217,10 +213,10 @@ var partyLocal = new Location({
 });
 
 var locationChoice = [
-barLocal,
-officeLocal,
-tiyLocal,
-partyLocal
+    barLocal,
+    officeLocal,
+    tiyLocal,
+    partyLocal
 ];
 
 ////////////////////////////
@@ -228,32 +224,32 @@ partyLocal
 ///////////////////////////
 
 
-var spinnerPaddle = new Paddle ({
-  name: "Spinner",
-  id: 0,
-  img: 'images/paddle.jpg',
-  control: 2,
-  power: 1,
+var spinnerPaddle = new Paddle({
+    name: "Spinner",
+    id: 0,
+    img: 'images/paddle.jpg',
+    control: 2,
+    power: 1,
 });
 
-var smashPaddle = new Paddle ({
-  name: "Smash",
-  img: 'images/paddle.jpg',
-  id: 1,
-  control: 1,
-  power: 2,
+var smashPaddle = new Paddle({
+    name: "Smash",
+    img: 'images/paddle.jpg',
+    id: 1,
+    control: 1,
+    power: 2,
 });
 
-var allRoundPaddle = new Paddle ({
-  name: "All-Rounder",
-  img: 'images/paddle.jpg',
-  id: 2,
-  control: 1,
-  power: 1,
+var allRoundPaddle = new Paddle({
+    name: "All-Rounder",
+    img: 'images/paddle.jpg',
+    id: 2,
+    control: 1,
+    power: 1,
 });
 
 var paddleChoice = [
-  spinnerPaddle,
-  smashPaddle,
-  allRoundPaddle,
+    spinnerPaddle,
+    smashPaddle,
+    allRoundPaddle,
 ];
