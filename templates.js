@@ -3,6 +3,12 @@ templates.charDisplayTemplate = [
   "<div id= '<%= id%>' rel = '<%= name %>' class='info-container'>",
   "<h1> <%= name %> </h1>",
   "<img src = '<%= img %>'>",
+  "<div id = 'stats-div'>",
+  "<h3> Forehand:  <%= forehand %> </h3>",
+  "<h3> Backhand:  <%= backhand %> </h3>",
+  "<h3> Mental Strength: <%= mentalStrength %> </h3>",
+  "<h4> Total Rating: <%= rating %> </h3>",
+  "</div>",
   "</div>"
 ].join("");
 

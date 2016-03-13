@@ -236,14 +236,14 @@ var locationChoice = [
 var spinnerPaddle = new Paddle({
     name: "Spinner",
     id: 0,
-    img: 'images/paddle.jpg',
+    img: 'images/paddle-vector.png',
     control: 2,
     power: 1,
 });
 
 var smashPaddle = new Paddle({
     name: "Smash",
-    img: 'images/paddle.jpg',
+    img: 'images/paddle-vector.png',
     id: 1,
     control: 1,
     power: 2,
@@ -251,7 +251,7 @@ var smashPaddle = new Paddle({
 
 var allRoundPaddle = new Paddle({
     name: "All-Rounder",
-    img: 'images/paddle.jpg',
+    img: 'images/paddle-vector.png',
     id: 2,
     control: 1,
     power: 1,

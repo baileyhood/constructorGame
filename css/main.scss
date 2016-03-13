@@ -1,3 +1,8 @@
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #F5F1E8;
+}
+
 .inactive {
   display: none;
 }
@@ -12,39 +17,84 @@ h1 {
 .players-container {
   width: 75%;
   margin: 0 auto;
-  background-color: lightgrey;
 }
 .info-container {
+  background-image: url('../images/paddle-tilt-right.png');
+  background-size: cover;
   width: 48%;
-  background-color: grey;
   display: inline-block;
   margin-right: 4%;
   margin-bottom: 37px;
+  background: white;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
+  transition: all .2s ease-in-out;
+  h1 {
+    background-color: #DB5A49;
+    margin: 0;
+    padding: 10px 0;
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.5em;
+  }
   img {
-    margin: 0 auto;
+    margin: 20px auto;
     display: block;
     width: 50%;
   }
 }
+.info-container:hover {
+  transform: scale(1.02);
+}
 .info-container:nth-child(2n+2) {
   margin-right: 0;
+}
+
+#stats-div {
+  h3 {
+    display: inline-block;
+    margin: 0 14px;
+    color: #DB5A49;
+    font-weight: 300;
+    font-size: 1em;
+    margin: 0 22px;
+  }
+  h4 {
+    text-align: center;
+    background-color: #BACBBB;
+    color: white;
+    margin: 0;
+    padding: 7px 0px;
+    margin-top: 10px;
+    text-transform: uppercase;
+  }
 }
 
 ///////////////////////////////
 /////PADDLE SELECTION
 //////////////////////////////
 
+.selection-info-container {
+  text-align: center;
+  background-color: white;
+  padding: 11px 0;
+}
+
 .paddles-container {
   width: 75%;
   margin: 0 auto;
-  background-color: lightgrey;
 }
 .paddle-info-container {
   width: 30.5%;
-  background-color: grey;
+  background-color: white;
   display: inline-block;
   margin-right: 4%;
   margin-bottom: 37px;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
+  transition: all .2s ease-in-out;
   img {
     margin: 0 auto;
     display: block;
@@ -53,6 +103,9 @@ h1 {
 }
 .paddle-info-container:nth-child(3) {
   margin-right: 0;
+}
+.paddle-info-container:hover {
+  transform: scale(1.02);
 }
 
 ///////////////////////////////

@@ -71,7 +71,7 @@ var page = {
         $('.player-selection').addClass('inactive');
         $('.paddle-selection').addClass('inactive');
         $('.location-selection').removeClass('inactive');
-        $('.selection-info-container').append("Chosen Paddle: " + ($(this).attr('rel')));
+        $('.selection-info-container').append(" | " + "Chosen Paddle: " + ($(this).attr('rel')) );
 
     },
 
@@ -116,7 +116,7 @@ var page = {
         event.preventDefault();
         selectedOpponent = charChoice[($(this).attr('id'))];
         console.log("Selected Opponent is: " + selectedOpponent.name);
-        selectedOpponent.locationSelection(selectedCharacter.location); //this is adding the location that selectedCharacter choose so that they are both in the same location 
+        selectedOpponent.locationSelection(selectedCharacter.location); //this is adding the location that selectedCharacter choose so that they are both in the same location
         $('.opponent-selection-container').append("Opponent: " + ($(this).attr('rel')));
         $('.opponent-selection').addClass('inactive');
         $('.stroke-section').removeClass('inactive');
