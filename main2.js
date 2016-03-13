@@ -88,7 +88,7 @@ var page = {
 
     selectLocation: function(event) {
         event.preventDefault();
-        selectedCharacter.locationSelection(locationChoice[($(this).attr('id'))]); //redefining selectedCharacter so it has location selection
+        selectedCharacter.locationSelection(locationChoice[($(this).attr('id'))]);//redefining selectedCharacter so it has location selection
         console.log("added location selection: ", selectedCharacter);
         page.opponentPull();
         $('.selection-info-container').append("Chosen Location: " + ($(this).attr('rel')));
@@ -116,6 +116,7 @@ var page = {
         event.preventDefault();
         selectedOpponent = charChoice[($(this).attr('id'))];
         console.log("Selected Opponent is: " + selectedOpponent.name);
+        selectedOpponent.locationSelection(selectedCharacter.location); //this is adding the location that selectedCharacter choose so that they are both in the same location 
         $('.opponent-selection-container').append("Opponent: " + ($(this).attr('rel')));
         $('.opponent-selection').addClass('inactive');
         $('.stroke-section').removeClass('inactive');
