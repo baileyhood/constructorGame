@@ -117,9 +117,10 @@ var page = {
         selectedOpponent = charChoice[($(this).attr('id'))];
         console.log("Selected Opponent is: " + selectedOpponent.name);
         selectedOpponent.locationSelection(selectedCharacter.location); //this is adding the location that selectedCharacter choose so that they are both in the same location
-        $('.opponent-selection-container').append("Opponent: " + ($(this).attr('rel')));
+        $('.selection-info-container').append(" | " + "Opponent: " + ($(this).attr('rel')));
         $('.opponent-selection').addClass('inactive');
         $('.stroke-section').removeClass('inactive');
+        page.playerDisplay(); // showing chosen players for next page
         page.displayScore(); //for next page
 
     },
@@ -140,7 +141,7 @@ var page = {
             " Opponent's Energy: ", selectedOpponent.energy);
         $('.stroke-section').addClass('inactive');
         $('.return-stroke-section').removeClass('inactive');
-        page.opponentsReturnShot ();
+        setTimeout(page.opponentsReturnShot (),5000);
         page.endOfGame();
     },
 
@@ -152,14 +153,14 @@ var page = {
             " Opponent's Energy: ", selectedOpponent.energy);
         $('.stroke-section').addClass('inactive');
         $('.return-stroke-section').removeClass('inactive');
-        page.opponentsReturnShot ();
+        setTimeout(page.opponentsReturnShot (),5000);
         page.endOfGame();
     },
 
     displayScore: function() {
-        $('.player-scoreboard').html(selectedCharacter.name + "'s Score: " +
+        $('.player-scoreboard').html(selectedCharacter.name + ": " +
             selectedCharacter.points + " | ");
-        $('.opponent-scoreboard').html(selectedOpponent.name + "'s Score: " +
+        $('.opponent-scoreboard').html(selectedOpponent.name + ": " +
             selectedOpponent.points);
     },
 
@@ -172,6 +173,14 @@ var page = {
         $('.return-stroke-section').addClass('inactive');
         $('.stroke-section').removeClass('inactive');
         page.endOfGame();
+    },
+
+    playerDisplay: function () {
+      var chosenPlayers = [selectedCharacter, selectedOpponent];
+      var tmpl = _.template(templates.chosenPlayersDisplayTemplate);
+      chosenPlayers.forEach(function(el){
+        $('.chosen-players-container').append(tmpl(el));
+      });
     },
 
     endOfGame: function() {

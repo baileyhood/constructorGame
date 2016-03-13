@@ -11,9 +11,19 @@ h1 {
   text-align: center;
 }
 
+.opening-page {
+  h1 {
+    background: linear-gradient(45deg, #9BAFDC, #637BB0);
+    color: white;
+    margin: 0;
+    padding: 15px;
+  }
+}
+
 ///////////////////////////////
 /////PLAYER SELECTION PAGE
 //////////////////////////////
+
 .player-selection {
   color: white;
 }
@@ -23,6 +33,7 @@ h1 {
 }
 .info-container {
   width: 48%;
+  cursor: pointer;
   display: inline-block;
   margin-right: 4%;
   margin-bottom: 37px;
@@ -107,6 +118,7 @@ h5 {
   display: inline-block;
   margin-right: 4%;
   margin-bottom: 37px;
+  cursor: pointer;
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
   -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
@@ -157,6 +169,7 @@ h5 {
   background-color: white;
   display: inline-block;
   margin-right: 4%;
+  cursor: pointer;
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
   -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
@@ -204,6 +217,7 @@ h5 {
   margin-right: 4%;
   margin-bottom: 37px;
   background-color: white;
+  cursor: pointer;
   transition: all .2s ease-in-out;
   h1 {
     background-color: #F3F4F7;
@@ -233,9 +247,10 @@ h5 {
 //////////////////////////////
 #forehand-stroke {
   display: inline-block;
+  margin-top: 10px;
   width: 50%;
   text-align: center;
-  padding: 57px 0;
+  padding: 33px 0;
   cursor: pointer;
   background-color: #9CAFDA;
   font-size: 3em;
@@ -244,12 +259,22 @@ h5 {
 #backhand-stroke {
   display: inline-block;
   width: 49.6%;
+  margin-top: 10px;
   text-align: center;
-  padding: 57px 0;
+  padding: 33px 0;
   cursor: pointer;
   background-color: #637BB0;
   font-size: 3em;
   color: white;
+}
+
+.chosen-players-container {
+  margin: 14px auto;
+  width: 34%;
+  .info-container {
+    width: 48%;
+    margin-bottom: 0;
+  }
 }
 
 .opponent-scoreboard, .player-scoreboard {
@@ -261,11 +286,11 @@ h5 {
 }
 
 .scoreboard-container {
-  margin: 0 auto;
-    width: 47%;
+  margin: 13px auto;
+    width: 28%;
 }
 
-.opponent-game-commentary {
+.opponent-game-commentary, .player-game-commentary {
   text-align: center;
   color: white;
 }

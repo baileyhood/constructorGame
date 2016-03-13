@@ -7,7 +7,7 @@ function Player(options) {
     this.name = options.name || "Richard Head";
     this.id = options.id;
     this.points = 0;
-    this.energy = 5;
+    this.energy = 10;
     this.forehand = options.forehand;
     this.backhand = options.backhand;
     this.mentalStrength = options.mentalStrength;

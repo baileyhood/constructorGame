@@ -45,3 +45,16 @@ templates.opponentDisplayTemplate = [
   "</div>",
   "</div>"
 ].join("");
+
+templates.chosenPlayersDisplayTemplate = [
+  "<div id= '<%= id%>' rel = '<%= name %>' class='info-container'>",
+  "<h1> <%= name %> </h1>",
+  "<img src = '<%= img %>'>",
+  "<div id = 'stats-div'>",
+  "<h3> Forehand:  <%= forehand %> </h3>",
+  "<h3> Backhand:  <%= backhand %> </h3>",
+  "<h3> Mental Strength: <%= mentalStrength %> </h3>",
+  "<h4> Energy: <%= energy %> </h3>",
+  "</div>",
+  "</div>"
+].join("");
