@@ -1,6 +1,7 @@
 body {
   font-family: 'Open Sans', sans-serif;
-  background-color: #F5F1E8;
+  background-color: #464A4E;
+  box-sizing: none;
 }
 
 .inactive {
@@ -13,35 +14,37 @@ h1 {
 ///////////////////////////////
 /////PLAYER SELECTION PAGE
 //////////////////////////////
-
+.player-selection {
+  color: white;
+}
 .players-container {
   width: 75%;
   margin: 0 auto;
 }
 .info-container {
-  background-image: url('../images/paddle-tilt-right.png');
-  background-size: cover;
   width: 48%;
   display: inline-block;
   margin-right: 4%;
   margin-bottom: 37px;
-  background: white;
+  background-color: white;
   -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
   -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
   transition: all .2s ease-in-out;
   h1 {
-    background-color: #DB5A49;
+    background-color: #F3F4F7;
     margin: 0;
     padding: 10px 0;
-    color: white;
+    color:  #464A4E;
     text-transform: uppercase;
-    font-size: 1.5em;
+    font-size: 1.3em;
+    border-bottom: 1px solid #D5D5D5;
   }
   img {
     margin: 20px auto;
     display: block;
     width: 50%;
+    border: 1px solid #D5D5D5;
   }
 }
 .info-container:hover {
@@ -52,24 +55,33 @@ h1 {
 }
 
 #stats-div {
+  text-align: center;
   h3 {
     display: inline-block;
     margin: 0 14px;
-    color: #DB5A49;
+    color: #464A4E;
     font-weight: 300;
     font-size: 1em;
     margin: 0 22px;
   }
   h4 {
     text-align: center;
-    background-color: #BACBBB;
+    background: linear-gradient(45deg, #9BAFDC, #637BB0);
     color: white;
     margin: 0;
     padding: 7px 0px;
     margin-top: 10px;
     text-transform: uppercase;
   }
+h5 {
+    margin: 0 auto;
+    padding: 13px 25px;
+    text-align: left;
+    background-color: #F3F4F7;
+    font-weight: 300;
 }
+
+  }
 
 ///////////////////////////////
 /////PADDLE SELECTION
@@ -80,7 +92,11 @@ h1 {
   background-color: white;
   padding: 11px 0;
 }
-
+.paddle-selection {
+  h1{
+    color: white;
+  }
+}
 .paddles-container {
   width: 75%;
   margin: 0 auto;
@@ -95,8 +111,18 @@ h1 {
   -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
   box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
   transition: all .2s ease-in-out;
+  padding-bottom: 15px;
+  h1 {
+    background-color: #F3F4F7;
+    margin: 0;
+    padding: 10px 0;
+    color:  #464A4E;
+    text-transform: uppercase;
+    font-size: 1.3em;
+    border-bottom: 1px solid #D5D5D5;
+  }
   img {
-    margin: 0 auto;
+    margin: 27px auto;
     display: block;
     width: 50%;
   }
@@ -111,23 +137,50 @@ h1 {
 ///////////////////////////////
 /////LOCATION SELECTION
 //////////////////////////////
-
+.location-selection {
+  h1{
+    color: white;
+  }
+  h2 {
+    color: white;
+    font-weight: 300;
+    text-align: center;
+    padding: 0 148px;
+  }
+}
 .locations-container {
   width: 75%;
   margin: 0 auto;
-  background-color: lightgrey;
 }
 .location-info-container {
   width: 48%;
-  background-color: grey;
+  background-color: white;
   display: inline-block;
   margin-right: 4%;
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
+  -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
+  box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.4);
+  transition: all .2s ease-in-out;
   margin-bottom: 37px;
+  padding-bottom: 15px;
+
+  h1 {
+    background-color: #F3F4F7;
+    margin: 0;
+    padding: 10px 0;
+    color:  #464A4E;
+    text-transform: uppercase;
+    font-size: 1.3em;
+    border-bottom: 1px solid #D5D5D5;
+  }
   img {
-    margin: 0 auto;
+    margin: 27px auto;
     display: block;
     width: 50%;
   }
+}
+.location-info-container:hover {
+  transform: scale(1.02);
 }
 .location-info-container:nth-child(2n+2) {
   margin-right: 0;
@@ -136,25 +189,83 @@ h1 {
 ///////////////////////////////
 /////OPPONENT SELECTION
 //////////////////////////////
-
+.opponent-selection {
+  h1 {
+    color: white;
+  }
+}
 .opponent-container {
-  width: 75%;
+  width: 85%;
   margin: 0 auto;
-  background-color: lightgrey;
 }
 .opponent-info-container {
-  width: 48%;
-  background-color: grey;
+  width: 30%;
   display: inline-block;
   margin-right: 4%;
   margin-bottom: 37px;
+  background-color: white;
+  transition: all .2s ease-in-out;
+  h1 {
+    background-color: #F3F4F7;
+    margin: 0;
+    padding: 10px 0;
+    color:  #464A4E;
+    text-transform: uppercase;
+    font-size: 1.3em;
+    border-bottom: 1px solid #D5D5D5;
+  }
   img {
-    margin: 0 auto;
+    margin: 27px auto;
     display: block;
-    width: 50%;
+    width: 75%;
   }
 }
+.opponent-info-container:hover {
+  transform: scale(1.02);
+}
 
-.location-info-container:last-child {
+.opponent-info-container:last-child {
   margin-right: 0;
+}
+
+///////////////////////////////
+/////GAMEPLAY AREA
+//////////////////////////////
+#forehand-stroke {
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+  padding: 57px 0;
+  cursor: pointer;
+  background-color: #9CAFDA;
+  font-size: 3em;
+  color: white;
+}
+#backhand-stroke {
+  display: inline-block;
+  width: 49.6%;
+  text-align: center;
+  padding: 57px 0;
+  cursor: pointer;
+  background-color: #637BB0;
+  font-size: 3em;
+  color: white;
+}
+
+.opponent-scoreboard, .player-scoreboard {
+  font-family: 'Raleway Dots', cursive;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  font-size: 2.5em;
+}
+
+.scoreboard-container {
+  margin: 0 auto;
+    width: 47%;
+}
+
+.opponent-game-commentary {
+  text-align: center;
+  color: white;
 }

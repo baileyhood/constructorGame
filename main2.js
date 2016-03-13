@@ -29,7 +29,7 @@ var page = {
         $('.opponent-selection').on('click', '.opponent-info-container', page.selectOpponent);
         $('#forehand-stroke').on('click', page.forehandSelection);
         $('#backhand-stroke').on('click', page.backhandSelection);
-        $('#return-stroke').on('click', page.opponentsReturnShot);
+        // $('#return-stroke').on('click', page.opponentsReturnShot);
     },
 
     ///////////////////////////////
@@ -91,7 +91,7 @@ var page = {
         selectedCharacter.locationSelection(locationChoice[($(this).attr('id'))]);//redefining selectedCharacter so it has location selection
         console.log("added location selection: ", selectedCharacter);
         page.opponentPull();
-        $('.selection-info-container').append("Chosen Location: " + ($(this).attr('rel')));
+        $('.selection-info-container').append(" | " +"Chosen Location: " + ($(this).attr('rel')));
         $('.location-selection').addClass('inactive');
         $('.opponent-selection').removeClass('inactive');
     },
@@ -120,7 +120,13 @@ var page = {
         $('.opponent-selection-container').append("Opponent: " + ($(this).attr('rel')));
         $('.opponent-selection').addClass('inactive');
         $('.stroke-section').removeClass('inactive');
+        page.displayScore(); //for next page
+
     },
+
+    // displayPlayersInGameplay: function () {
+    //     $('.stroke-section').
+    // },
 
     ///////////////////////////////
     /////GAMEPLAY
@@ -134,6 +140,7 @@ var page = {
             " Opponent's Energy: ", selectedOpponent.energy);
         $('.stroke-section').addClass('inactive');
         $('.return-stroke-section').removeClass('inactive');
+        page.opponentsReturnShot ();
         page.endOfGame();
     },
 
@@ -145,12 +152,13 @@ var page = {
             " Opponent's Energy: ", selectedOpponent.energy);
         $('.stroke-section').addClass('inactive');
         $('.return-stroke-section').removeClass('inactive');
+        page.opponentsReturnShot ();
         page.endOfGame();
     },
 
     displayScore: function() {
         $('.player-scoreboard').html(selectedCharacter.name + "'s Score: " +
-            selectedCharacter.points);
+            selectedCharacter.points + " | ");
         $('.opponent-scoreboard').html(selectedOpponent.name + "'s Score: " +
             selectedOpponent.points);
     },

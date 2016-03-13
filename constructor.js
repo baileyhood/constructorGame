@@ -32,28 +32,28 @@ Player.prototype.forehandStroke = function(opponent) {
     if (randomStrokeNum < this.forehand) {
         if (this.energy < 1) {
             opponent.points = opponent.points + 1;
-            this.energy = 10;
-            opponent.energy = 10;
+            this.energy = 5;
+            opponent.energy = 5;
 
         } else if (opponent.energy < 1) {
             this.points = this.points + 1;
-            this.energy = 10;
-            opponent.energy = 10;
+            this.energy = 5;
+            opponent.energy = 5;
         } else {
             opponent.energy = opponent.energy - this.forehand;
         }
     }
     else if (this.generateDistraction() > this.mentalStrength) {
-        console.log (this.name + " got distracted and missed the shot");
+        $('.player-game-commentary').html (this.name + " got distracted and missed the shot");
         opponent.points = opponent.points + 1;
-        this.energy = 10;
-        opponent.energy = 10;
+        this.energy = 5;
+        opponent.energy = 5;
     }
     else {
-        console.log(this.name, "Missed the shot! Random number was: ", randomStrokeNum);
+        $('.player-game-commentary').html(this.name, "Missed the shot! Random number was: ", randomStrokeNum);
         opponent.points = opponent.points + 1;
-        this.energy = 10;
-        opponent.energy = 10;
+        this.energy = 5;
+        opponent.energy = 5;
     }
 };
 
@@ -75,16 +75,16 @@ Player.prototype.backhandStroke = function(opponent) {
         }
     }
     else if (this.generateDistraction() > this.mentalStrength) {
-      console.log (this.name + " got distracted and missed the shot");
+       $('.player-game-commentary').html(this.name + " got distracted and missed the shot");
       opponent.points = opponent.points + 1;
-      this.energy = 10;
-      opponent.energy = 10;
+      this.energy = 5;
+      opponent.energy = 5;
     }
     else {
-        console.log(this.name, "Missed the shot!");
+        $('.player-game-commentary').html(this.name, "Missed the shot!");
         opponent.points = opponent.points + 1;
-        this.energy = 10;
-        opponent.energy = 10;
+        this.energy = 5;
+        opponent.energy = 5;
     }
 };
 
@@ -92,11 +92,11 @@ Player.prototype.returnShot = function(opponent) {
     var randomNum = Math.floor(Math.random() * 2) + 1;
     if (randomNum === 1) {
         this.forehandStroke(opponent);
-        console.log("Opponent made a return forehand stroke");
+        $('.opponent-game-commentary').html("Opponent made a return forehand stroke");
     }
     if (randomNum === 2) {
         this.backhandStroke(opponent);
-        console.log("Opponent made a return backhand stroke");
+        $('.opponent-game-commentary').html("Opponent made a return backhand stroke");
     }
 };
 
@@ -203,21 +203,21 @@ var barLocal = new Location({
 var officeLocal = new Location({
     name: "Office",
     id: 1,
-    img: 'images/bar.jpg',
+    img: 'images/office-thumb.jpg',
     setDistractionLevel: 1
 });
 
 var tiyLocal = new Location({
     name: "The Iron Yard",
     id: 2,
-    img: 'images/bar.jpg',
+    img: 'images/tiy-thumb.jpg',
     setDistractionLevel: 3
 });
 
 var partyLocal = new Location({
     name: "Loud Party",
     id: 3,
-    img: 'images/bar.jpg',
+    img: 'images/party-thumb.jpg',
     setDistractionLevel: 6
 });
 
