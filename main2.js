@@ -91,6 +91,7 @@ var page = {
         selectedCharacter.locationSelection(locationChoice[($(this).attr('id'))]);//redefining selectedCharacter so it has location selection
         console.log("added location selection: ", selectedCharacter);
         page.opponentPull();
+        // page.locationDisplay();
         $('.selection-info-container').append(" | " +"Chosen Location: " + ($(this).attr('rel')));
         $('.location-selection').addClass('inactive');
         $('.opponent-selection').removeClass('inactive');
@@ -126,13 +127,24 @@ var page = {
 
     },
 
-    // displayPlayersInGameplay: function () {
-    //     $('.stroke-section').
-    // },
-
     ///////////////////////////////
     /////GAMEPLAY
     //////////////////////////////
+    // locationDisplay: function () {
+    //   $('body').css('background-image', 'url(' + selectedCharacter.location.lrgImg + ')');
+    // },
+    playerDisplay: function () {
+      var chosenPlayers = [selectedCharacter, selectedOpponent];
+      var tmpl = _.template(templates.chosenPlayersDisplayTemplate);
+      chosenPlayers.forEach(function(el){
+        $('.chosen-players-container').append(tmpl(el));
+      });
+    },
+
+    energyDisplay: function () {
+      $('.chosen-players-container').find('#energy-display-container').html(selectedCharacter.energy);
+      $('.info-container:last-child').find('#energy-display-container').html(selectedOpponent.energy);
+    },
 
     forehandSelection: function(player) {
         event.preventDefault();
@@ -174,19 +186,6 @@ var page = {
         $('.return-stroke-section').addClass('inactive');
         $('.stroke-section').removeClass('inactive');
         page.endOfGame();
-    },
-
-    playerDisplay: function () {
-      var chosenPlayers = [selectedCharacter, selectedOpponent];
-      var tmpl = _.template(templates.chosenPlayersDisplayTemplate);
-      chosenPlayers.forEach(function(el){
-        $('.chosen-players-container').append(tmpl(el));
-      });
-    },
-
-    energyDisplay: function () {
-      $('.chosen-players-container').find('#energy-display-container').html(selectedCharacter.energy);
-      $('.info-container:last-child').find('#energy-display-container').html(selectedOpponent.energy);
     },
 
     endOfGame: function() {

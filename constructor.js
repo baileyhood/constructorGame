@@ -109,10 +109,16 @@ Player.prototype.generateDistraction = function() {
 
 Player.prototype.gameOver = function(opponent) {
     if (this.points > 10 || opponent.points > 10) {
-        console.log("GAME OVER!");
         $('.stroke-section').addClass('inactive');
         $('.return-stroke-section').addClass('inactive');
         $('.game-over-section').removeClass('inactive');
+        if (this.points > 10) {
+          $('.game-over-section').html("<h2>" +selectedCharacter.name + " won match!" + "</h2>").css({
+            'text-align': 'center',
+            'color': 'white',
+            'font-size': '3em',
+          });
+        }
     }
 };
 
@@ -125,6 +131,7 @@ function Location(options) {
     this.name = options.name;
     this.id = options.id;
     this.img = options.img;
+    this.lrgImg = options.lrgImg;
     this.setDistractionLevel = options.setDistractionLevel;
     // this.totalDistractionLevel = this.setDistractionLevel + this.randomDistractionLevel();
 }
@@ -211,6 +218,7 @@ var tiyLocal = new Location({
     name: "The Iron Yard",
     id: 2,
     img: 'images/tiy-thumb.jpg',
+    lrgImg: 'images/tiy-large.jpg',
     setDistractionLevel: 3
 });
 

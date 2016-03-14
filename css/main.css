@@ -90,6 +90,12 @@ h1 {
 .paddle-selection h1 {
   color: white; }
 
+.paddle-selection h2 {
+  color: white;
+  font-weight: 300;
+  text-align: center;
+  padding: 0 148px; }
+
 .paddles-container {
   width: 75%;
   margin: 0 auto; }
@@ -255,3 +261,7 @@ h1 {
   color: #464A4E;
   background-color: white;
   padding: 10px 0; }
+
+.game-over-section h2 {
+  text-align: center;
+  color: white; }
