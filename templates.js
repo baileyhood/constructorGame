@@ -54,7 +54,7 @@ templates.chosenPlayersDisplayTemplate = [
   "<h3> Forehand:  <%= forehand %> </h3>",
   "<h3> Backhand:  <%= backhand %> </h3>",
   "<h3> Mental Strength: <%= mentalStrength %> </h3>",
-  "<h4> Energy: <%= energy %> </h3>",
+  "<h4 id='energy-display-container'>  </h4>",
   "</div>",
   "</div>"
 ].join("");

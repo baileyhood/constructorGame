@@ -32,13 +32,13 @@ Player.prototype.forehandStroke = function(opponent) {
     if (randomStrokeNum < this.forehand) {
         if (this.energy < 1) {
             opponent.points = opponent.points + 1;
-            this.energy = 5;
-            opponent.energy = 5;
+            this.energy = 10;
+            opponent.energy = 10;
 
         } else if (opponent.energy < 1) {
             this.points = this.points + 1;
-            this.energy = 5;
-            opponent.energy = 5;
+            this.energy = 10;
+            opponent.energy = 10;
         } else {
             opponent.energy = opponent.energy - this.forehand;
         }
@@ -46,14 +46,14 @@ Player.prototype.forehandStroke = function(opponent) {
     else if (this.generateDistraction() > this.mentalStrength) {
         $('.player-game-commentary').html (this.name + " got distracted and missed the shot");
         opponent.points = opponent.points + 1;
-        this.energy = 5;
+        this.energy = 10;
         opponent.energy = 5;
     }
     else {
-        $('.player-game-commentary').html(this.name, "Missed the shot! Random number was: ", randomStrokeNum);
+        $('.player-game-commentary').html(this.name, "Missed the shot!");
         opponent.points = opponent.points + 1;
-        this.energy = 5;
-        opponent.energy = 5;
+        this.energy = 10;
+        opponent.energy = 10;
     }
 };
 
@@ -77,14 +77,14 @@ Player.prototype.backhandStroke = function(opponent) {
     else if (this.generateDistraction() > this.mentalStrength) {
        $('.player-game-commentary').html(this.name + " got distracted and missed the shot");
       opponent.points = opponent.points + 1;
-      this.energy = 5;
-      opponent.energy = 5;
+      this.energy = 10;
+      opponent.energy = 10;
     }
     else {
         $('.player-game-commentary').html(this.name, "Missed the shot!");
         opponent.points = opponent.points + 1;
-        this.energy = 5;
-        opponent.energy = 5;
+        this.energy = 10;
+        opponent.energy = 10;
     }
 };
 
@@ -149,7 +149,7 @@ function Paddle(options) {
 var russPlayer = new Player({
     name: "Russ",
     id: 0,
-    forehand: 5,
+    forehand: 4,
     backhand: 4,
     mentalStrength: 2,
     img: "images/russ.jpg"
@@ -238,14 +238,14 @@ var spinnerPaddle = new Paddle({
     id: 0,
     img: 'images/paddle-vector.png',
     control: 2,
-    power: 1,
+    power: 0,
 });
 
 var smashPaddle = new Paddle({
     name: "Smash",
     img: 'images/paddle-vector.png',
     id: 1,
-    control: 1,
+    control: 0,
     power: 2,
 });
 

@@ -120,6 +120,7 @@ var page = {
         $('.selection-info-container').append(" | " + "Opponent: " + ($(this).attr('rel')));
         $('.opponent-selection').addClass('inactive');
         $('.stroke-section').removeClass('inactive');
+        setInterval(function(){page.energyDisplay();}, 100);
         page.playerDisplay(); // showing chosen players for next page
         page.displayScore(); //for next page
 
@@ -141,7 +142,7 @@ var page = {
             " Opponent's Energy: ", selectedOpponent.energy);
         $('.stroke-section').addClass('inactive');
         $('.return-stroke-section').removeClass('inactive');
-        setTimeout(page.opponentsReturnShot (),5000);
+        page.opponentsReturnShot ();
         page.endOfGame();
     },
 
@@ -153,7 +154,7 @@ var page = {
             " Opponent's Energy: ", selectedOpponent.energy);
         $('.stroke-section').addClass('inactive');
         $('.return-stroke-section').removeClass('inactive');
-        setTimeout(page.opponentsReturnShot (),5000);
+        page.opponentsReturnShot ();
         page.endOfGame();
     },
 
@@ -183,8 +184,13 @@ var page = {
       });
     },
 
+    energyDisplay: function () {
+      $('.chosen-players-container').find('#energy-display-container').html(selectedCharacter.energy);
+      $('.info-container:last-child').find('#energy-display-container').html(selectedOpponent.energy);
+    },
+
     endOfGame: function() {
-        selectedCharacter.gameOver(selectedOpponent);
+      selectedCharacter.gameOver(selectedOpponent);
     }
 
 }; //end of page object
